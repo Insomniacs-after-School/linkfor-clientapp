@@ -6,7 +6,7 @@ const tailwindcss = require("tailwindcss");
 const autoprefixer = require("autoprefixer");
 module.exports = {
   entry: {
-    app: path.resolve(__dirname, "src/index.js"),
+    app: path.resolve(__dirname, "src/index.jsx"),
   },
   output: {
     filename: "[name].bundle.js",
