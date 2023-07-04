@@ -4,25 +4,23 @@ import Register from '../components/Register';
 import Login from '../components/Login';
 
 const HomePage = () => {
-
-  const [route, setRoute] = useState(true);
+  const [menu, setMenu] = useState(true);
 
   const setLogin = () => {
-    setRoute(true);
+    setMenu(true);
   }
   
   const setRegister = () => {
-    setRoute(false);
-  }
-  
+    setMenu(false);
+  }  
 
   return (
-    <div className='w-[80%] mx-auto bg-[#333] text-white p-4'>
-      <div className='w-[50%] mx-auto flex justify-around p-3'>
-        <button onClick={setLogin} className='bg-blue-300 p-4'>Login</button> 
-        <button onClick={setRegister} className='bg-blue-300 p-4'>Register</button>
+    <div className='w-[80%] mx-auto bg-slate-800 text-white p-4'>
+      <div className='w-[400px] mx-auto flex justify-around py-3'>
+        <button onClick={setLogin} className='bg-slate-300 text-slate-800 font-semibold w-[50%] py-2 mr-2 rounded-sm'>Sign In</button> 
+        <button onClick={setRegister} className='bg-slate-300 text-slate-800 font-semibold w-[50%] py-2 rounded-sm'>Sign Up</button>
       </div>
-      { route ? (<Login />) : (<Register />)}
+      {menu ? (<Login />) : (<Register />)}
     </div>
   )
 }
