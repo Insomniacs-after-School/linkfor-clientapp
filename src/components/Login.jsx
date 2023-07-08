@@ -1,38 +1,74 @@
-import React from 'react'
-import { useState } from 'react';
+import React from "react";
+import { useState } from "react";
 
-const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setpassword] = useState('');
+const Login = ({ setPage }) => {
+  const [username, setUsername] = useState("");
+  const [password, setpassword] = useState("");
 
   const usernameHandling = (value) => {
     setUsername(value);
-  }
+  };
 
   const passwordHandling = (value) => {
     setpassword(value);
-  }
+  };
 
   const formHandling = (e) => {
     e.preventDefault();
     console.log({ username, password });
-  }
-  
+  };
+
+  const toRegisterPage = () => {
+    setPage(2);
+  };
+
+  const toHomePage = () => {
+    setPage(0);
+  };
 
   return (
-    <div className='w-[400px] mx-auto bg-slate-300 p-4 rounded-sm'>
-      <h1 className='text-[#333] font-semibold text-xl text-center mb-10'>Sign In</h1>
+    <div className="sm:w-[400px] mx-auto p-4 flex flex-col gap-4">
+      <h1
+        onClick={toHomePage}
+        className="text-white text-2xl font-bold text-center mb-10"
+      >
+        Sign In
+      </h1>
       <form>
-        <input type="text"
-        placeholder='Masukkan Username'
-        className='block w-[100%] mb-2 px-1 py-3 rounded-sm bg-slate-200 text-[#333]'
-        onChange={(e) => usernameHandling(e.target.value)}/>
-        <input type="password" placeholder='Masukkan Password' className='block w-[100%] mb-10 px-1 py-3 rounded-sm bg-slate-200 text-[#333]'
-        onChange={(e) => passwordHandling(e.target.value)}/>
-        <button onClick={(e) => formHandling(e)} type='submit' className='w-[100%] bg-slate-800 py-2 font-semibold rounded-sm'>Sign In</button>
-      </form>
-    </div>
-  )
-}
+        <input
+          type="text"
+          placeholder="Masukkan Username"
+          className="block rounded-lg px-2 font-semibold w-4/5 sm:w-2/4 mx-auto py-1 mt-3 bg-[#365E74]"
+          onChange={(e) => usernameHandling(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          className="block rounded-lg px-2 font-semibold w-4/5 sm:w-2/4 mx-auto py-1 mt-3 bg-[#365E74]"
+          onChange={(e) => passwordHandling(e.target.value)}
+        />
 
-export default Login
+        <button
+          onClick={(e) => formHandling(e)}
+          className="bg-[#69B254] rounded-lg font-semibold w-4/5 sm:w-2/4 mx-auto py-1 mt-4 hover:bg-white hover:text-[#69B254]"
+          type="submit"
+        >
+          Sign In
+        </button>
+      </form>
+      <p>Forgot password?</p>
+      <div>
+        <p>Don't have LinkFor account?</p>
+        <button
+          onClick={toRegisterPage}
+          className="bg-[#224D66] rounded-lg font-semibold w-4/5 sm:w-2/4 mx-auto py-1 mt-3"
+          type="submit"
+        >
+          Create new account
+        </button>
+      </div>
+    </div>
+  );
+};
+
+export default Login;

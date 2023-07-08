@@ -1,28 +1,54 @@
-import React from 'react'
-import { useState } from 'react'
-import Register from '../components/Register';
-import Login from '../components/Login';
+import React from "react";
+import { useState } from "react";
+import Register from "../components/Register";
+import Login from "../components/Login";
 
 const HomePage = () => {
-  const [menu, setMenu] = useState(true);
+  const [menu, setMenu] = useState(0);
 
   const setLogin = () => {
-    setMenu(true);
-  }
-  
+    setMenu(1);
+  };
+
   const setRegister = () => {
-    setMenu(false);
-  }  
+    setMenu(2);
+  };
 
   return (
-    <div className='w-[80%] mx-auto bg-slate-800 text-white p-4'>
-      <div className='w-[400px] mx-auto flex justify-around py-3'>
-        <button onClick={setLogin} className='bg-slate-300 text-slate-800 font-semibold w-[50%] py-2 mr-2 rounded-sm'>Sign In</button> 
-        <button onClick={setRegister} className='bg-slate-300 text-slate-800 font-semibold w-[50%] py-2 rounded-sm'>Sign Up</button>
+    <div className="bg-[rgb(3,26,39)] text-white p-4 h-screen">
+      <div className="bg-[#031A27] border-2 border-[#286486] md:w-[501px] max-h-[766px] m-auto md:mt-[90px] text-center p-8 rounded-lg">
+        {menu == 0 ? (
+          <>
+            <h1 className="text-2xl font-bold">Welcome to LinkFor</h1>
+            <p className="text-xs font-thin my-6">
+              LinkFor is a project similar to Linktree, designed to provide
+              users with a more connected and efficient experience. With
+              LinkFor, you can organize and share the links that matter to you
+              in one place.
+            </p>
+            <div className="flex flex-col gap-4">
+              <button
+                onClick={setLogin}
+                className="bg-[#69B254] font-semibold w-4/5 sm:w-2/4 mx-auto py-2 rounded-lg hover:bg-white hover:text-[#69B254]"
+              >
+                Sign In
+              </button>
+              <button
+                onClick={setRegister}
+                className="bg-[#224D66] font-semibold w-4/5 sm:w-2/4 mx-auto py-2 rounded-lg hover:bg-white hover:text-[#224D66]"
+              >
+                Create new account
+              </button>
+            </div>
+          </>
+        ) : menu == 1 ? (
+          <Login setPage={setMenu} />
+        ) : (
+          <Register setPage={setMenu} />
+        )}
       </div>
-      {menu ? (<Login />) : (<Register />)}
     </div>
-  )
-}
+  );
+};
 
-export default HomePage
+export default HomePage;
