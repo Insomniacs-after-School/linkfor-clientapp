@@ -15,7 +15,7 @@ const HomePage = () => {
   };
 
   return (
-    <div className="bg-[rgb(3,26,39)] text-white p-4 h-screen">
+    <div id="homepage" className="bg-[rgb(3,26,39)] text-white p-4 h-screen">
       <div className="bg-[#031A27] border-2 border-[#286486] md:w-[501px] max-h-[766px] m-auto md:mt-[90px] text-center p-8 rounded-lg">
         {menu == 0 ? (
           <>

@@ -7,3 +7,9 @@
 body {
   font-family: "Plus Jakarta Sans", sans-serif;
 }
+
+#homepage {
+  background-image: url("./assets/img/Background Pattern.svg");
+  background-size: cover;
+  background-blend-mode: multiply;
+}
