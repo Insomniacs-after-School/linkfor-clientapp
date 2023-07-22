@@ -1,9 +1,16 @@
 import React from "react";
 import { useState } from "react";
 
+//referensi
+// https://github.com/gitdagray/react_register_form/blob/main/src/Register.js
+
 const Register = ({ setPage }) => {
   const [username, setUsername] = useState("");
+  const [validName, setValidName] = useState(false);
+  const [userFocus, setUserFocus] = useState(false);
+
   const [email, setEmail] = useState("");
+
   const [password, setpassword] = useState("");
 
   const usernameHandling = (value) => {

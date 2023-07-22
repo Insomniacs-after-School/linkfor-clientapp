@@ -1,21 +1,23 @@
 import React from "react";
 import { Router, Routes, Route, BrowserRouter } from "react-router-dom";
-import Routers from "./routes/Route";
-import { AuthProvider } from "./context/AuthProvider";
+import HomePage from "./pages/HomePage";
+import Dashboard from "./pages/Dashboard";
+import Layout from "./pages/Layout";
+import RequireAuth from "./components/RequireAuth";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <AuthProvider>
-        <Routes>
-          {Routers.map((router, index) => {
-            return (
-              <Route path={router.path} element={router.element} key={index} />
-            );
-          })}
-        </Routes>
-      </AuthProvider>
-    </BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        {/* public route */}
+        <Route path="/" element={<HomePage />} />
+
+        {/* protect these routes */}
+        <Route element={<RequireAuth />}>
+          <Route path="dashboard" element={<Dashboard />} />
+        </Route>
+      </Route>
+    </Routes>
   );
 };
 
