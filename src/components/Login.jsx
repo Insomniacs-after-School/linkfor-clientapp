@@ -1,10 +1,10 @@
 import React, { useEffect, useState, useRef, useContext } from "react";
-import AuthContext from "../context/AuthProvider";
+import useAuth from "../hooks/useAuth";
 import axios from "axios";
 import API_ENDPOINT from "../api/globals/api-endpoints";
 
 const Login = ({ setPage }) => {
-  const { setAuth } = useContext(AuthContext);
+  const { setAuth } = useAuth;
 
   const userRef = useRef();
   const errRef = useRef();
@@ -35,7 +35,7 @@ const Login = ({ setPage }) => {
       );
       console.log(response.data);
       const { auth, id, dataId } = response.data.data;
-      // setAuth({ authToken: auth, userId: id, dataId: dataId });
+      setAuth({ authToken: auth, userId: id, dataId: dataId });
       setSuccess(true);
     } catch (error) {
       if (!error?.response) {
