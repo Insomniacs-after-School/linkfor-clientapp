@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,600;0,700;1,700&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,600;0,700;1,700&display=swap");
 
 body {
   font-family: "Plus Jakarta Sans", sans-serif;
@@ -12,4 +12,4 @@ body {
   background-image: url("./assets/img/Background Pattern.svg");
   background-size: cover;
   background-blend-mode: multiply;
-}
+} */

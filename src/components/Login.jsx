@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useContext } from "react";
+import { useEffect, useState, useRef } from "react";
 import useAuth from "../hooks/useAuth";
 import axios from "axios";
 import API_ENDPOINT from "../api/globals/api-endpoints";
@@ -37,13 +37,14 @@ const Login = ({ setPage }) => {
       const { auth, id, dataId } = response.data.data;
       setAuth({ authToken: auth, userId: id, dataId: dataId });
       setSuccess(true);
+      console.log(success);
     } catch (error) {
-      if (!error?.response) {
-        setErrMsg("no server response");
-      } else {
-        setErrMsg(error.response.data.message);
-      }
-      errRef.current.focus();
+      // if (!error?.response) {
+      //   setErrMsg("no server response");
+      // } else {
+      //   setErrMsg(error.response.data.message);
+      // }
+      // errRef.current.focus();
     }
   };
 
