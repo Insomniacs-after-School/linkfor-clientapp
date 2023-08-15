@@ -1,10 +1,16 @@
 import { useEffect, useState, useRef } from "react";
+import { Link } from "react-router-dom";
+import PropTypes from 'prop-types'
 import useAuth from "../hooks/useAuth";
 import axios from "axios";
 import API_ENDPOINT from "../api/globals/api-endpoints";
 
+Login.propTypes = {
+  setPage: PropTypes.string.isRequired,
+}
+
 const Login = ({ setPage }) => {
-  const { setAuth } = useAuth;
+  const { setAuth } = useAuth();
 
   const userRef = useRef();
   const errRef = useRef();
@@ -35,16 +41,15 @@ const Login = ({ setPage }) => {
       );
       console.log(response.data);
       const { auth, id, dataId } = response.data.data;
-      setAuth({ authToken: auth, userId: id, dataId: dataId });
       setSuccess(true);
-      console.log(success);
+      setAuth({ authToken: auth, userId: id, dataId: dataId });
     } catch (error) {
-      // if (!error?.response) {
-      //   setErrMsg("no server response");
-      // } else {
-      //   setErrMsg(error.response.data.message);
-      // }
-      // errRef.current.focus();
+      if (!error?.response) {
+        setErrMsg("no server response");
+      } else {
+        setErrMsg(error.response.data.message);
+      }
+      errRef.current.focus();
     }
   };
 
@@ -55,7 +60,7 @@ const Login = ({ setPage }) => {
           <section>
             <h1>You are logged in!</h1>
             <br />
-            <a href="http://">Go Dasboard</a>
+            <Link to="/dashboard">Go Dasboard</Link>
           </section>
         </>
       ) : (
@@ -104,7 +109,7 @@ const Login = ({ setPage }) => {
           </form>
           <p>Forgot password?</p>
           <div>
-            <p>Don't have LinkFor account?</p>
+            <p>Do not have LinkFor account?</p>
             <button
               onClick={() => setPage(2)}
               className="bg-[#224D66] rounded-lg font-semibold w-4/5 sm:w-2/4 mx-auto py-1 mt-3"
